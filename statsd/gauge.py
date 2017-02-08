@@ -16,7 +16,7 @@ class Gauge(statsd.Client):
         :keyword value: The gauge value to send
         '''
         name = self._get_name(self.name, subname)
-        self.logger.info('%s: %s', name, value)
+        self.logger.debug('%s: %s', name, value)
         return statsd.Client._send(self, {name: '%s|g' % value})
 
     def send(self, subname, value):

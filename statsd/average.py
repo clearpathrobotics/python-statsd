@@ -23,6 +23,5 @@ class Average(statsd.Client):
         :keyword value: The raw value to send
         '''
         name = self._get_name(self.name, subname)
-        self.logger.info('%s: %d', name, value)
+        self.logger.debug('%s: %d', name, value)
         return statsd.Client._send(self, {name: '%d|a' % value})
-

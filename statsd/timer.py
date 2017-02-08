@@ -59,7 +59,7 @@ class Timer(statsd.Client):
         ms = delta * 1000
         if ms > self.min_send_threshold:
             name = self._get_name(self.name, subname)
-            self.logger.info('%s: %0.08fms', name, ms)
+            self.logger.debug('%s: %0.08fms', name, ms)
             return statsd.Client._send(self, {name: '%0.08f|ms' % ms})
         else:
             return True
