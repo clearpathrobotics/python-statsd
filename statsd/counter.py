@@ -28,7 +28,7 @@ class Counter(statsd.Client):
         :type delta: int
         '''
         name = self._get_name(self.name, subname)
-        self.logger.info('%s: %d', name, delta)
+        self.logger.debug('%s: %d', name, delta)
         return statsd.Client._send(self, {name: '%d|c' % delta})
 
     def increment(self, subname=None, delta=1):
@@ -108,4 +108,3 @@ def decrement(key, delta=1):
     :type delta: int
     '''
     return Counter(key).decrement(delta=delta)
-
